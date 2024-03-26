@@ -10,15 +10,13 @@ import { Detail } from 'src/app/models/detail';
   styleUrls: ['./album-detail.component.css']
 })
 export class AlbumDetailComponent implements OnInit{
-  detail?: Detail[] = []
+  detail: Detail[] = []
 
   constructor(private albumService: AlbumsService, private route: ActivatedRoute){}
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get("userId"));
+    const id = this.route.snapshot.paramMap.get("id");
 
-    this.albumService.getAlbumById(id)
-      .subscribe(dati => {
-        this.detail = dati;
-      }); 
+    this.albumService.getAlbumById(+id!)
+      .subscribe(dati => this.detail = dati);
   }
 }

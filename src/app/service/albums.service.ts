@@ -17,6 +17,6 @@ export class AlbumsService {
   }
 
   getAlbumById(albumNumId: number): Observable<Detail[]>{
-    return this.http.get<Detail[]>(this.url + "/photos?albumId/" + albumNumId)
+    return this.http.get<Detail[]>(this.url + "/photos?albumId=" + albumNumId)
   }
 }
